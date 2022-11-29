@@ -2,7 +2,8 @@
 0. 构建服务镜像
 ```sh
 docker build -t green-webbench .
-docker run -dit -p 8080:8080 -v /home/wq/workplace/green-final-webbench:/root/green-webbench --name green-webbench green-webbench sh
+# docker run -dit -p 8080:8080 -v /home/wq/workplace/green-final-webbench:/root/green-webbench --name green-webbench green-webbench sh
+docker run -dit -v /home/wq/workplace/green-final-webbench:/root/green-webbench --name green-webbench --network=host green-webbench sh
 docker exec -it green-webbench sh
 ```
 
@@ -31,9 +32,10 @@ cd /root/green-webbench
 ./output/cinatra_server.out.out
 
 # java-springmvc
-./output/springmvc_server.out
+java -Xmx4G -Xms4G -Xmn3G -XX:MetaspaceSize=256M -XX:MaxMetaspaceSize=256M -XX:+UseG1GC -XX:+AlwaysPreTouch -XX:+UseFastAccessorMethods -jar ./output/springmvc_server.jar
+
 # java-flux
-./output/flux_server.out
+java -Xmx4G -Xms4G -Xmn3G -XX:MetaspaceSize=256M -XX:MaxMetaspaceSize=256M -XX:+UseG1GC -XX:+AlwaysPreTouch -XX:+UseFastAccessorMethods -jar ./output/flux_server.jar
 ```
 4. apache ab压测工具
 100万个请求，1000个链接。
