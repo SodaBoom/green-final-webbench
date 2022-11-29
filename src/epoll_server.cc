@@ -13,7 +13,7 @@
 #include <condition_variable>
 
 #define MAXSIZE 1000
-#define THREAD_NUM 24
+#define THREAD_NUM 16
 using namespace std;
 int ep_fd_list[THREAD_NUM] = {0};
 std::mutex mtx;

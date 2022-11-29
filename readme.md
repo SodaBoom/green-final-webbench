@@ -31,16 +31,27 @@ cd /root/green-webbench
 # cinatra库, aio
 ./output/cinatra_server.out.out
 
-# java-springmvc
+# java-springmvc (参数可能有误，本地跑出来的效果并不好)
 java -Xmx4G -Xms4G -Xmn3G -XX:MetaspaceSize=256M -XX:MaxMetaspaceSize=256M -XX:+UseG1GC -XX:+AlwaysPreTouch -XX:+UseFastAccessorMethods -jar ./output/springmvc_server.jar
 
-# java-flux
-java -Xmx4G -Xms4G -Xmn3G -XX:MetaspaceSize=256M -XX:MaxMetaspaceSize=256M -XX:+UseG1GC -XX:+AlwaysPreTouch -XX:+UseFastAccessorMethods -jar ./output/flux_server.jar
+# java-flux (参数可能有误，本地跑出来的效果并不好)
+java -Xmx3G -Xms3G -Xmn3G -XX:MetaspaceSize=256M -XX:MaxMetaspaceSize=256M -XX:+UseG1GC -XX:+AlwaysPreTouch -XX:+UseFastAccessorMethods -jar ./output/flux_server.jar
 ```
 4. apache ab压测工具
 100万个请求，1000个链接。
 ```sh
 ab -n 1000000 -c 1000 -k -r 127.0.0.1:8080/collect_energy/1/2
+# ab -m POST -n 1000000 -c 1000 -k -r 127.0.0.1:8080/collect_energy/1/2
 ```
 
 5. 实验结果
+
+| framework | qps (requests per second) |
+| :-----| ----: |
+| httplib_server | 21707 |
+| cinatra_server | 97013 |
+| conn_per_thread_server | 74274 |
+| epoll_server | 106323 |
+
+6. 参考
+[Web Framework Benchmarks](https://www.techempower.com/benchmarks/#section=data-r21&test=plaintext)
