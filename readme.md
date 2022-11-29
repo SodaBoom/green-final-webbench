@@ -15,7 +15,7 @@ make all
 2. apache ab进行压测
 并发1000个请求，一共发起100W个请求
 ```sh
-ab -n 1000000 -c 1000 127.0.0.1:8080/collect_energy/1/2
+ab -n 1000000 -c 1000 -k -r 127.0.0.1:8080/collect_energy/1/2
 ```
 
 3. 启动服务器
