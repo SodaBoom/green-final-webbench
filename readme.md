@@ -52,6 +52,8 @@ ab -n 1000000 -c 1000 -k -r 127.0.0.1:8080/collect_energy/1/2
 | cinatra_server | 97013 |
 | conn_per_thread_server | 74274 |
 | epoll_server | 106323 |
+| springmvc_server | 6208 |
+| flux_server | 7292 |
 
 6. 参考
 [Web Framework Benchmarks](https://www.techempower.com/benchmarks/#section=data-r21&test=plaintext)
